@@ -163,7 +163,9 @@ def runSearch(options,search,shodan_io):
 					time.sleep(retries * 5)					
 					try:
 						print('Retrying.')
-						data = shodan_io.count(s)["total"]
+						data = shodan_io.count(search)["total"]
+						if (options.verbose or options.search != ''):
+							print('Current IP count for query ' + search + ' is ' + str(data))
 						return data
 					except:
 						retries = retries + 1
@@ -347,7 +349,7 @@ def searchCountry(country,options,shodan_io,fileToSearch):
 			if (country != "global"):
 				s = (s + ' country:"' + country + '"').lstrip(' ')
 			
-			time.sleep(1)
+			time.sleep(0.5)
 			
 			count = runSearch(options,s,shodan_io)
 			output.append(count)
@@ -520,7 +522,7 @@ def fixErrors(options,shodan_io):
 					change = True
 					if (options.verbose):
 						print("Getting replacement data for " + c[0])
-					time.sleep(1)						
+					time.sleep(0.5)						
 					c[len(c)-1]	= runSearch(options,c[0],shodan_io)
 			if (change):
 				try:
