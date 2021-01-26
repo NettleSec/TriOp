@@ -711,7 +711,7 @@ You may find a tutorial on how to use TriOp at https://untrustednetwork.net/en/t
 	parser.add_option("-v", "--verbose", action="store_true", default=False,
 	help="print status messages")
 	parser.add_option("-e", "--fix_errors", action="store_true", default=False,
-	help='add information about the count of all IPs in the relevant country')
+	help='repeat all previously unsuccessful searches from the last row of a CSV file')
 	parser.add_option("-r", "--retry_level", type=int, default=2,
 	help='number indicating how many retries should be attempted - 0-n (default = 2)')
 	parser.add_option("-I", "--input_file", type=str, default='',
