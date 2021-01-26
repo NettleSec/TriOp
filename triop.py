@@ -349,7 +349,7 @@ def searchCountry(country,options,shodan_io,fileToSearch):
 			if (country != "global"):
 				s = (s + ' country:"' + country + '"').lstrip(' ')
 			
-			time.sleep(0.5)
+			time.sleep(1)
 			
 			count = runSearch(options,s,shodan_io)
 			output.append(count)
@@ -522,7 +522,7 @@ def fixErrors(options,shodan_io):
 					change = True
 					if (options.verbose):
 						print("Getting replacement data for " + c[0])
-					time.sleep(0.5)						
+					time.sleep(1)						
 					c[len(c)-1]	= runSearch(options,c[0],shodan_io)
 			if (change):
 				try:
@@ -678,7 +678,7 @@ Tool for quickly gathering information from Shodan.io about the number of IPs wh
 
 Created by Jan Kopriva
 
-You may find a tutorial on how to use TriOp at https://untrustednetwork.net/en/triop
+You may find a tutorial on how to use TriOp at https://untrustednetwork.net/en/triop/
 '''
 	parser = OptionParser(info)
 	
