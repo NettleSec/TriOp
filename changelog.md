@@ -6,4 +6,4 @@
  - For detailed description of new features, see https://untrustednetwork.net/en/2021/03/08/triop-update-version-1.1/.
 
 1.0
-Initial release
+ - Initial release
