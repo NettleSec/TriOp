@@ -6,7 +6,7 @@
 # Author: Jan Kopriva (https://untrustednetwork.net)
 # Licence: GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 #
-# Version 1.1 (3/2021)
+# Version 1.2 (3/2021)
 
 import csv
 from datetime import datetime
@@ -125,10 +125,25 @@ def addToFile(options,file):
 	contents = getFileContents(file,1)
 	count = len(contents[0])
 	additions = getFileContents(options.input_file,1)
-	filename = file.split('.')[0]
-	if ("-" in filename):
-		pos = filename.find('-')
-		parameter = filename[(pos+1):]
+	parameter = "";
+	if (options.filter != ""):
+		for search in contents:
+			try:
+				if (options.filter in search[0]):
+					parameterEnd = search[0].find(" ",search[0].find(options.filter))
+					if (parameterEnd == -1):
+						parameter = search[0][search[0].find(options.filter):]
+					else:
+						parameter = search[0][search[0].find(options.filter):parameterEnd]
+
+					break
+			except:
+				error('Error "' + str(sys.exc_info()[1]) + '" while searching for parameterized input in ' + file + '.')
+		
+		if (parameter == ""):
+			error('Parameter ' + options.filter + " not found in " + file + ". Skipping addition to this file...")
+			return 0;
+				
 		adds = []
 		for addition in additions:
 			newAddition = []
@@ -579,7 +594,7 @@ def checkOptions(options):
 		if ((options.filename_load != '' or options.search_file != '') and (options.input_file != '')):
 			return 1
 		else:
-			error("File name(s) of existing search file(s) (-f/-S) and an input file with additional searches (-I) have to be specified for use of TriOp in the 'add' mode.")
+			error("File name(s) of existing search file(s) (-f/-S) and an input file with additional searches (-I) have to be specified for use of TriOp in the 'add' mode. Filter (--filter) specification is optional.")
 			return 0
 	elif (options.mode == "get"):
 		if (options.search == '' or (options.search_file == '' and options.filename_load == '') or options.output_file == ''):
@@ -732,7 +747,7 @@ You may find a tutorial on how to use TriOp at https://untrustednetwork.net/en/t
 	parser.add_option("-f", "--filename_load", type=str, default='',
 	help="load all files in the same directory which contain specified string in their name as search inputs")
 	parser.add_option("--filter", type=str, default='',
-	help='filter for use with list of query terms (-p/-P) to which it should be prepended')	
+	help='filter for use with list of query terms (-p/-P) to which it should be prepended or to specify filters to be added to input searches in the "add" mode')	
 	parser.add_option("-p", "--parameter", type=str, default='',
 	help='comma-separated list of query terms for use with a filter (--filter)')
 	parser.add_option("-P", "--parameter_file", type=str, default='',
