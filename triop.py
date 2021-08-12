@@ -6,7 +6,7 @@
 # Author: Jan Kopriva (https://untrustednetwork.net)
 # Licence: GPLv3 (http://www.gnu.org/licenses/gpl-3.0.html)
 #
-# Version 1.3 (8/2021)
+# Version 1.3 (8/2021) 
 
 import csv
 from datetime import datetime
