@@ -1,5 +1,8 @@
 # Changelog
 
+1.3
+ - Added searches for CVE-2021-31207, CVE-2021-34473 and CVE-2021-34523.
+
 1.2
  - Fixed "add" mode for use with input files containing parameterized queries.
  - For detailed description the update, see https://untrustednetwork.net/en/2021/03/14/triop-update-version-1.2/.
