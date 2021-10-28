@@ -1,5 +1,8 @@
 # Changelog
 
+1.4
+ - Added search for CVE-2021-31206.
+
 1.3
  - Added searches for CVE-2021-31207, CVE-2021-34473 and CVE-2021-34523.
 
