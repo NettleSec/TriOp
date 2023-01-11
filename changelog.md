@@ -1,5 +1,10 @@
 # Changelog
 
+1.5
+ - Added automated generation of searches for vulnerabilities from the CISA Known Exploited Vulnerabilities catalog.
+ - Added searches for CVE-2016-3088, CVE-2017-15944, CVE-2019-11043, CVE-2019-1579, CVE-2019-16928, CVE-2020-13671, CVE-2020-2021, CVE-2020-28949, CVE-2020-36193, CVE-2021-39226, CVE-2021-40438, CVE-2021-41773, CVE-2021-42013, CVE-2022-0028 and CVE-2022-36804.
+ - For detailed description the newly added features, see https://isc.sans.edu/diary/Passive+detection+of+internetconnected+systems+affected+by+vulnerabilities+from+the+CISA+KEV+catalog/29426/.
+
 1.4
  - Added search for CVE-2021-31206.
 
